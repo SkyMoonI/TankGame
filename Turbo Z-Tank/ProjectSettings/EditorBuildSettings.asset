@@ -4,5 +4,26 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Project/Scenes/MainMenuScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Project/Scenes/OptionsScene.unity
+    guid: 850080800ae6ee04e956bfc88106faf8
+  - enabled: 1
+    path: Assets/Project/Scenes/LevelSelectScene.unity
+    guid: bec8e3691e7ee0749b70cca17090b90e
+  - enabled: 1
+    path: Assets/Project/Scenes/GameplayScene.unity
+    guid: 1b42651b6e3e1874f903eab62580bbc4
+  - enabled: 1
+    path: Assets/Project/Scenes/LevelCompleteScene.unity
+    guid: 6da6cd6a64d6bd843b104309c9f4d902
+  - enabled: 1
+    path: Assets/Project/Scenes/GameOverScene.unity
+    guid: f45f306cdeff5b54d88516867a61fb22
+  - enabled: 1
+    path: Assets/Project/Scenes/UpgradeMenuScene.unity
+    guid: 4cf3ecda99eddf84dba6368f754df714
   m_configObjects: {}
