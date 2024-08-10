@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5174007065815504394}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.122861, y: -0.00000047683716, z: 13.971896}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1939
+  m_VersionIndex: 1942
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -687,4 +687,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112c76c4b5b38444b941efdddbeb7392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionEffect: {fileID: 0}
+  _explosionEffect: {fileID: 1142722759028990555, guid: 500bec30ce64e2f43aaf47d3e23f7c24, type: 3}
