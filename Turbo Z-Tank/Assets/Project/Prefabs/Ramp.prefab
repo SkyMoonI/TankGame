@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2514701905776604716}
   - component: {fileID: 6292852088577557070}
   - component: {fileID: 2443552762785022669}
+  - component: {fileID: 25957629262057622}
   m_Layer: 0
   m_Name: Ramp
   m_TagString: Untagged
@@ -247,7 +248,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 966
+  m_VersionIndex: 969
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -324,3 +325,15 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &25957629262057622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584538341372231836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a731c4c68f8f34a8d2692fe349588e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
