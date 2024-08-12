@@ -4,34 +4,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+	GameManager _gameManager;
 	PlayerInputAction _inputActions;
 	Rigidbody _rigidbody;
-	float _speed;
-	public float Speed
-	{
-		get
-		{
-			return _speed;
-		}
-	}
-	float _health = 100.0f;
-	public float Health
-	{
-		get
-		{
-			return _health;
-		}
-	}
-	float _originalSpeed = 5.0f;
+	[SerializeField] Tank tank;
+
+	public float CurrentSpeed { get; private set; }
+
+	public float CurrentHealth { get; private set; }
 	void Awake()
 	{
 		_inputActions = new PlayerInputAction();
 		_rigidbody = GetComponent<Rigidbody>();
+		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	void Start()
 	{
-		_speed = _originalSpeed;
+		CurrentSpeed = tank.Speed;
+		CurrentHealth = tank.Health;
 	}
 
 	void OnEnable()
@@ -49,31 +39,33 @@ public class PlayerController : MonoBehaviour
 	{
 		Vector2 moveInput = _inputActions.Player.Move.ReadValue<Vector2>();
 		Vector3 moveDir = new Vector3(moveInput.x, 0, moveInput.y);
-		transform.Translate(moveDir * Time.deltaTime * _speed, Space.World);
+		transform.Translate(moveDir * Time.deltaTime * CurrentSpeed, Space.World);
 	}
 
 	public void ModifySpeed(float factor)
 	{
-		_speed *= factor;
+		CurrentSpeed *= factor;
 	}
 
 	public void ResetSpeed()
 	{
-		_speed = _originalSpeed;
+		CurrentSpeed = tank.Speed;
 	}
 
 	public void BoostSpeed(float multipiler, float duration)
 	{
-		_speed *= multipiler;
+		CurrentSpeed *= multipiler;
 		Invoke(nameof(ResetSpeed), duration);
 	}
 
 	public void TakeDamage(float damage)
 	{
-		_health -= damage;
-		if (_health <= 0.0f)
+		CurrentHealth -= damage;
+		if (CurrentHealth <= 0.0f)
 		{
+			CurrentHealth = 0.0f;
 			Destroy(gameObject);
+			_gameManager.TriggerGameOver();
 		}
 	}
 }
