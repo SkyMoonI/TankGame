@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	GameManager _gameManager;
 	PlayerInputAction _inputActions;
 	Rigidbody _rigidbody;
 	[SerializeField] Tank tank;
@@ -12,11 +12,11 @@ public class PlayerController : MonoBehaviour
 	public float CurrentSpeed { get; private set; }
 
 	public float CurrentHealth { get; private set; }
+
 	void Awake()
 	{
 		_inputActions = new PlayerInputAction();
 		_rigidbody = GetComponent<Rigidbody>();
-		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	void Start()
 	{
@@ -37,9 +37,17 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		Vector2 moveInput = _inputActions.Player.Move.ReadValue<Vector2>();
-		Vector3 moveDir = new Vector3(moveInput.x, 0, moveInput.y);
-		transform.Translate(moveDir * Time.deltaTime * CurrentSpeed, Space.World);
+		if (transform.position.y < -10.0f)
+		{
+			Die();
+		}
+		if (!GameManager.Instance.IsDead && !GameManager.Instance.IsWin)
+		{
+			Vector2 moveInput = _inputActions.Player.Move.ReadValue<Vector2>();
+			Vector3 moveDir = new Vector3(moveInput.x, 0, moveInput.y);
+			transform.Translate(moveDir * Time.deltaTime * CurrentSpeed, Space.World);
+		}
+
 	}
 
 	public void ModifySpeed(float factor)
@@ -64,8 +72,22 @@ public class PlayerController : MonoBehaviour
 		if (CurrentHealth <= 0.0f)
 		{
 			CurrentHealth = 0.0f;
-			Destroy(gameObject);
-			_gameManager.TriggerGameOver();
+			Die();
+		}
+	}
+	public void Die()
+	{
+		GameManager.Instance.IsDead = true;
+		Destroy(gameObject);
+		GameManager.Instance.TriggerGameEnd();
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("FinishLine"))
+		{
+			GameManager.Instance.IsWin = true;
+			GameManager.Instance.TriggerGameEnd();
 		}
 	}
 }

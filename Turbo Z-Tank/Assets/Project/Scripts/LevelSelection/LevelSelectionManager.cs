@@ -15,7 +15,6 @@ public class LevelSelectionManager : MonoBehaviour
 
 			int capturedIndex = i;
 			capturedIndex++;
-			Debug.Log(capturedIndex);
 
 			button.onClick.AddListener(() => SelectLevel(capturedIndex));
 			// Example of locking a level until the previous level is completed
@@ -32,6 +31,14 @@ public class LevelSelectionManager : MonoBehaviour
 	public void SelectLevel(int level)
 	{
 		SceneManager.LoadScene("Level" + level);
+		LevelComplete.Instance.SetLevel(level);
+		if (GameManager.Instance != null)
+		{
+			GameManager.Instance.IsDead = false;
+			GameManager.Instance.IsWin = false;
+			GameManager.Instance.TotalCoins = 0;
+		}
+
 	}
 
 	public void BackToMainMenu()

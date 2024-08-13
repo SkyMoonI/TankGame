@@ -5,14 +5,57 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+	public static GameManager Instance { get; private set; }
+	GameUIManager _gameUIManager;
 
-	public void TriggerGameOver()
+	bool _isDead = false;
+	public bool IsDead { get { return _isDead; } set { _isDead = value; } }
+	bool _isWin = false;
+	public bool IsWin { get { return _isWin; } set { _isWin = value; } }
+
+	int _totalCoins = 0;
+	public int TotalCoins { get { return _totalCoins; } set { _totalCoins = value; } }
+
+	void Awake()
 	{
-		StartCoroutine(GameOver());
+		if (Instance == null)
+		{
+			Instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
 	}
-	IEnumerator GameOver()
+
+	public void NewGameStart()
+	{
+		_gameUIManager = GameObject.Find("UIManager").GetComponent<GameUIManager>();
+		_gameUIManager.CoinsText.text = "Coins: " + _totalCoins.ToString();
+	}
+	public void TriggerGameEnd()
+	{
+		StartCoroutine(GameEnd());
+	}
+	IEnumerator GameEnd()
 	{
 		yield return new WaitForSeconds(1.0f);
-		SceneManager.LoadScene("UpgradeMenuScene");
+		if (_isWin)
+		{
+			LevelComplete.Instance.CompleteLevel();
+		}
+		_gameUIManager.GameEnd();
+		_gameUIManager.EndLevelCoinText.text = "Coins: " + _totalCoins.ToString();
+		Debug.Log(_totalCoins);
+		_totalCoins += PlayerPrefs.GetInt("playerCoins", 0);
+		PlayerPrefs.SetInt("playerCoins", _totalCoins);
 	}
+
+	public void AddCoin(int amount)
+	{
+		_totalCoins += amount;
+		_gameUIManager.CoinsText.text = "Coins: " + _totalCoins.ToString();
+	}
+
 }

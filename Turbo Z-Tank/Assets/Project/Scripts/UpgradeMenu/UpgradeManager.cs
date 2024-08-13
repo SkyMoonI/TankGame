@@ -47,8 +47,8 @@ public class UpgradeManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		UpdateUI();
 		LoadUpgradeLevels();
+		UpdateUI();
 		_cannonUpgradeButton.onClick.AddListener(() => UpgradePower(UpgradeType.Cannon));
 		_armorUpgradeButton.onClick.AddListener(() => UpgradePower(UpgradeType.Armor));
 		_speedUpgradeButton.onClick.AddListener(() => UpgradePower(UpgradeType.Speed));

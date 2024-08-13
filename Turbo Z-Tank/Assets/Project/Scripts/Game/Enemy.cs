@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
 	Transform _player;
 
+	int _coinValue = 5;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -33,7 +35,7 @@ public class Enemy : MonoBehaviour
 			if (player != null)
 			{
 				player.TakeDamage(_damage);
-				Destroy(gameObject); // Destroy enemy on contact
+				Die();
 			}
 		}
 	}
@@ -44,7 +46,13 @@ public class Enemy : MonoBehaviour
 		_health -= damage;
 		if (_health <= 0.0f)
 		{
-			Destroy(gameObject);
+			Die();
 		}
+	}
+
+	void Die()
+	{
+		GameManager.Instance.AddCoin(_coinValue);
+		Destroy(gameObject);
 	}
 }
