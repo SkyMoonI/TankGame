@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
 
 	public void NewGameStart()
 	{
+		_isDead = false;
+		_isWin = false;
+		_totalCoins = 0;
 		_gameUIManager = GameObject.Find("UIManager").GetComponent<GameUIManager>();
 		_gameUIManager.CoinsText.text = "Coins: " + _totalCoins.ToString();
 	}

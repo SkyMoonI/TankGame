@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 	{
 		CurrentSpeed = tank.Speed;
 		CurrentHealth = tank.Health;
+		GameManager.Instance.NewGameStart();
 	}
 
 	void OnEnable()
@@ -68,8 +69,8 @@ public class PlayerController : MonoBehaviour
 
 	public void TakeDamage(float damage)
 	{
-		CurrentHealth -= damage;
-		if (CurrentHealth <= 0.0f)
+		CurrentHealth -= damage * ((100 - tank.Armor) / 100);
+		if (CurrentHealth <= 0.0f && !GameManager.Instance.IsDead && !GameManager.Instance.IsWin)
 		{
 			CurrentHealth = 0.0f;
 			Die();

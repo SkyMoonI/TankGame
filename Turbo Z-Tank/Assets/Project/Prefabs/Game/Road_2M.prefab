@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7291338136931299474}
   - component: {fileID: 9091151318618262073}
   - component: {fileID: 8398793693500335294}
+  - component: {fileID: 3847286968909568123}
   m_Layer: 0
   m_Name: Road_2M
   m_TagString: Untagged
@@ -1160,7 +1161,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 20
+  m_VersionIndex: 23
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1237,6 +1238,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3847286968909568123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4065523575557053537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955f741c8ead3c640a24b9dfa085c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2344127813739710032
 PrefabInstance:
   m_ObjectHideFlags: 0

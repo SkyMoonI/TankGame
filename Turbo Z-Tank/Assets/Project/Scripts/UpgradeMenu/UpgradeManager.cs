@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 enum UpgradeType
 {
-	Cannon,
 	Armor,
 	Speed,
 	Health
@@ -20,26 +19,22 @@ public class UpgradeManager : MonoBehaviour
 	[SerializeField] TextMeshProUGUI _coinsText;
 
 	[Header("Upgrades")]
-	int _cannonLevel = 1;
 	int _armorLevel = 1;
 	int _speedLevel = 1;
 	int _healthLevel = 1;
-	int _maxUpgradeLevel = 5;
+	int _maxUpgradeLevel = 10;
 
 	[Header("Costs")]
-	int _cannonUpgradeCost = 200;
 	int _armorUpgradeCost = 150;
 	int _speedUpgradeCost = 100;
 	int _healthUpgradeCost = 150;
 
 	[Header("Buttons")]
-	[SerializeField] Button _cannonUpgradeButton;
 	[SerializeField] Button _armorUpgradeButton;
 	[SerializeField] Button _speedUpgradeButton;
 	[SerializeField] Button _healthUpgradeButton;
 
 	[Header("Sliders")]
-	[SerializeField] Slider _cannonSlider;
 	[SerializeField] Slider _armorSlider;
 	[SerializeField] Slider _speedSlider;
 	[SerializeField] Slider _healthSlider;
@@ -49,12 +44,10 @@ public class UpgradeManager : MonoBehaviour
 	{
 		LoadUpgradeLevels();
 		UpdateUI();
-		_cannonUpgradeButton.onClick.AddListener(() => UpgradePower(UpgradeType.Cannon));
 		_armorUpgradeButton.onClick.AddListener(() => UpgradePower(UpgradeType.Armor));
 		_speedUpgradeButton.onClick.AddListener(() => UpgradePower(UpgradeType.Speed));
 		_healthUpgradeButton.onClick.AddListener(() => UpgradePower(UpgradeType.Health));
 
-		_cannonSlider.maxValue = _maxUpgradeLevel;
 		_armorSlider.maxValue = _maxUpgradeLevel;
 		_speedSlider.maxValue = _maxUpgradeLevel;
 		_healthSlider.maxValue = _maxUpgradeLevel;
@@ -64,7 +57,6 @@ public class UpgradeManager : MonoBehaviour
 	{
 		_coinsText.text = "Coins: " + _playerCoins.ToString();
 
-		_cannonSlider.value = _cannonLevel;
 		_armorSlider.value = _armorLevel;
 		_speedSlider.value = _speedLevel;
 		_healthSlider.value = _healthLevel;
@@ -74,16 +66,6 @@ public class UpgradeManager : MonoBehaviour
 	{
 		switch (upgradeType)
 		{
-			case UpgradeType.Cannon:
-				if (_playerCoins >= _cannonUpgradeCost * _cannonLevel && _cannonLevel <= _maxUpgradeLevel)
-				{
-					_playerCoins -= _cannonUpgradeCost * _cannonLevel;
-					_cannonLevel++;
-					_cannonUpgradeCost *= 2;
-					UpdateUI();
-					SaveUpgradeLevels();
-				}
-				break;
 			case UpgradeType.Armor:
 				if (_playerCoins >= _armorUpgradeCost * _armorLevel && _armorLevel <= _maxUpgradeLevel)
 				{
@@ -125,7 +107,6 @@ public class UpgradeManager : MonoBehaviour
 
 	void SaveUpgradeLevels()
 	{
-		PlayerPrefs.SetInt("cannonLevel", _cannonLevel);
 		PlayerPrefs.SetInt("armorLevel", _armorLevel);
 		PlayerPrefs.SetInt("speedLevel", _speedLevel);
 		PlayerPrefs.SetInt("healthLevel", _healthLevel);
@@ -134,7 +115,6 @@ public class UpgradeManager : MonoBehaviour
 
 	void LoadUpgradeLevels()
 	{
-		_cannonLevel = PlayerPrefs.GetInt("cannonLevel", 1);
 		_armorLevel = PlayerPrefs.GetInt("armorLevel", 1);
 		_speedLevel = PlayerPrefs.GetInt("speedLevel", 1);
 		_healthLevel = PlayerPrefs.GetInt("healthLevel", 1);

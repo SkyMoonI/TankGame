@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6404981588885491162}
   - component: {fileID: 5815961992486839613}
   - component: {fileID: 7889213495121349815}
+  - component: {fileID: -3788584289318621889}
   m_Layer: 0
   m_Name: Road_4ER
   m_TagString: Untagged
@@ -1163,7 +1164,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 20
+  m_VersionIndex: 23
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1240,6 +1241,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &-3788584289318621889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190408721512725133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955f741c8ead3c640a24b9dfa085c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1053950544642815711
 PrefabInstance:
   m_ObjectHideFlags: 0

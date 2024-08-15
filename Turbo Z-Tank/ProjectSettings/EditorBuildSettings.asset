@@ -15,15 +15,12 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/LevelSelectScene.unity
     guid: bec8e3691e7ee0749b70cca17090b90e
   - enabled: 1
+    path: Assets/Project/Scenes/UpgradeMenuScene.unity
+    guid: 4cf3ecda99eddf84dba6368f754df714
+  - enabled: 1
     path: Assets/Project/Scenes/Level1.unity
     guid: 1b42651b6e3e1874f903eab62580bbc4
   - enabled: 1
-    path: Assets/Project/Scenes/LevelCompleteScene.unity
-    guid: 6da6cd6a64d6bd843b104309c9f4d902
-  - enabled: 1
-    path: Assets/Project/Scenes/GameOverScene.unity
-    guid: f45f306cdeff5b54d88516867a61fb22
-  - enabled: 1
-    path: Assets/Project/Scenes/UpgradeMenuScene.unity
-    guid: 4cf3ecda99eddf84dba6368f754df714
+    path: Assets/Project/Scenes/Level2.unity
+    guid: 1d4797f8362b2ce4d8824035652f8548
   m_configObjects: {}

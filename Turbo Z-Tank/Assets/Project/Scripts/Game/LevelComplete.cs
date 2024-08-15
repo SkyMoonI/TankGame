@@ -7,6 +7,7 @@ public class LevelComplete : MonoBehaviour
 	public static LevelComplete Instance { get; private set; }
 	int _completionCoinReward = 25;
 	int _level;
+	public int Level { get { return _level; } }
 
 	void Awake()
 	{
@@ -23,6 +24,8 @@ public class LevelComplete : MonoBehaviour
 	public void CompleteLevel()
 	{
 		GameManager.Instance.AddCoin(_completionCoinReward * _level);
+		PlayerPrefs.SetInt("Level" + Level + "Completed", 1);
+
 	}
 
 	public void SetLevel(int level)
