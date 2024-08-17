@@ -148,6 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tank: {fileID: 8542623612408313055}
+  _finishAudioSource: {fileID: 4629815540166369399, guid: 7b85f0bf1eece594b8c1afae48d84a4d, type: 3}
+  _deathAudioSource: {fileID: 129309121978925985, guid: d8ed01c0794ea244fac62a7e9d4bf234, type: 3}
+  _deathClip: {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
 --- !u!114 &8542623612408313055
 MonoBehaviour:
   m_ObjectHideFlags: 0

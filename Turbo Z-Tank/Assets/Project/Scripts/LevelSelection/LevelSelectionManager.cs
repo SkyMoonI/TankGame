@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class LevelSelectionManager : MonoBehaviour
 {
 	[SerializeField] List<Button> _levelButtons;
-	int _currentLevel = 1;
 
 
 	private void Start()

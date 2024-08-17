@@ -9,6 +9,7 @@ public class ExplosiveBarrel : MonoBehaviour
 	float _explosionForce = 700.0f;
 	int _damage = 50;
 
+
 	void OnCollisionEnter(Collision other)
 	{
 		if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy"))
@@ -19,6 +20,7 @@ public class ExplosiveBarrel : MonoBehaviour
 
 	void Explode()
 	{
+		transform.GetChild(0).GetComponent<AudioSource>().Play();
 		GameObject effect = Instantiate(_explosionEffect, transform.position, transform.rotation);
 
 		Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadius);
@@ -48,7 +50,8 @@ public class ExplosiveBarrel : MonoBehaviour
 				}
 			}
 		}
-		Destroy(gameObject);
+		transform.GetComponent<MeshRenderer>().enabled = false;
+		transform.GetComponent<MeshCollider>().enabled = false;
 		Destroy(effect, 2.0f);
 	}
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4731996789598916949}
   - component: {fileID: 6737019014464365385}
   - component: {fileID: 5408688814499128537}
+  - component: {fileID: 3515727080645522870}
   m_Layer: 0
   m_Name: Road_3Ex
   m_TagString: Untagged
@@ -1251,6 +1252,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955f741c8ead3c640a24b9dfa085c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3515727080645522870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3073989556261538860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b11431b5268c39468b4a5955264f8d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileLength: 10
 --- !u!1001 &2150813141320110017
 PrefabInstance:
   m_ObjectHideFlags: 0

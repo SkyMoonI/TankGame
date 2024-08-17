@@ -13,8 +13,14 @@ public class Spike : MonoBehaviour
 			PlayerController player = other.gameObject.GetComponent<PlayerController>();
 			if (player != null)
 			{
+				transform.GetChild(0).GetComponent<AudioSource>().Play();
 				player.TakeDamage(damage);
-				Destroy(transform.parent.gameObject);
+				transform.GetComponent<BoxCollider>().enabled = false;
+				foreach (Transform child in transform)
+				{
+					if (child.gameObject.name != "SpikeAudioSource")
+						Destroy(child.gameObject);
+				}
 			}
 		}
 	}

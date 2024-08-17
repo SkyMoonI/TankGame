@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4898472284838784135}
   - component: {fileID: 4922857243151374757}
   - component: {fileID: 570672698084457869}
+  - component: {fileID: 6361353249227359398}
   m_Layer: 0
   m_Name: Road_2REx
   m_TagString: Untagged
@@ -1251,6 +1252,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955f741c8ead3c640a24b9dfa085c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6361353249227359398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309896209596807980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b11431b5268c39468b4a5955264f8d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileLength: 10
 --- !u!1001 &1281693780817073927
 PrefabInstance:
   m_ObjectHideFlags: 0

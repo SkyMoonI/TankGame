@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
 		}
 		_gameUIManager.GameEnd();
 		_gameUIManager.EndLevelCoinText.text = "Coins: " + _totalCoins.ToString();
-		Debug.Log(_totalCoins);
 		_totalCoins += PlayerPrefs.GetInt("playerCoins", 0);
 		PlayerPrefs.SetInt("playerCoins", _totalCoins);
 	}

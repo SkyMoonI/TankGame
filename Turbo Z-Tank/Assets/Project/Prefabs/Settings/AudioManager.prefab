@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1482664899980352260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7499278671454441208}
+  - component: {fileID: 934014081762864826}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7499278671454441208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482664899980352260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &934014081762864826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482664899980352260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c0a8872a31dcf408129bd8dd09c400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _musicVolumeSlider: {fileID: 2810550375137137708, guid: 6688fb472000d244393131b5cb3340d4, type: 3}
+  _sfxVolumeSlider: {fileID: 1845138495450018807, guid: 7d7d2d754a2cd4c47b9371c3542c77a9, type: 3}
+  _musicSource: {fileID: 7646414104687080760, guid: 8497a630d9dffb348970f498937b6802, type: 3}
+  _sfxSource:
+  - {fileID: 5256524172110547200, guid: 20d06c53961103e408b07c8f747f6c07, type: 3}
+  - {fileID: 129309121978925985, guid: d8ed01c0794ea244fac62a7e9d4bf234, type: 3}
+  - {fileID: 7125185505393623625, guid: d07af0940b1975541bdd039babdf0a21, type: 3}
+  - {fileID: 5554559766726838932, guid: 985ec98e587fca541b85a24d0b0fb448, type: 3}
+  - {fileID: 4629815540166369399, guid: 7b85f0bf1eece594b8c1afae48d84a4d, type: 3}
+  - {fileID: 4339172088405775676, guid: cd51375ce2655954d96c7b0ee60a9fb5, type: 3}
+  - {fileID: 957842369097816427, guid: 0b8d90019959bec4fbf2a15602e981df, type: 3}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 public class TileSpawner : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class TileSpawner : MonoBehaviour
 
 	int _tilesSpawned = 0;
 	int _tilesToSpawn = 25;
-
+	int _totalTileLength = 0;
 	int _currentGameLevel = 1;
 
 
@@ -26,8 +27,13 @@ public class TileSpawner : MonoBehaviour
 		for (int i = 0; i < _tilesToSpawn; i++)
 		{
 			int randomIndex = Random.Range(0, _tilePrefabs.Count);
-			Vector3 spawnPosition = _spawnPoint.position + Vector3.forward * _tileLength * _tilesSpawned;
+
+			Vector3 spawnPosition = _spawnPoint.position + Vector3.forward * _totalTileLength;
 			Instantiate(_tilePrefabs[randomIndex], spawnPosition, Quaternion.identity);
+
+			_tileLength = _tilePrefabs[randomIndex].GetComponent<Tile>().TileLength;
+			_totalTileLength += (int)_tileLength;
+
 			_tilesSpawned++;
 
 			if (_tilesSpawned == _tilesToSpawn - 1)
@@ -39,7 +45,7 @@ public class TileSpawner : MonoBehaviour
 	}
 	void SpawnFinishLine()
 	{
-		Vector3 finishLinePosition = _spawnPoint.position + Vector3.forward * _tileLength * _tilesSpawned;
+		Vector3 finishLinePosition = _spawnPoint.position + Vector3.forward * _totalTileLength;
 		Instantiate(_finishLinePrefab, finishLinePosition, Quaternion.identity);
 	}
 

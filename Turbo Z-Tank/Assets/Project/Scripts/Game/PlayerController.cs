@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
 	public float CurrentHealth { get; private set; }
 
+
 	void Awake()
 	{
 		_inputActions = new PlayerInputAction();
@@ -79,16 +80,8 @@ public class PlayerController : MonoBehaviour
 	public void Die()
 	{
 		GameManager.Instance.IsDead = true;
-		Destroy(gameObject);
 		GameManager.Instance.TriggerGameEnd();
+		Destroy(gameObject);
 	}
 
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.CompareTag("FinishLine"))
-		{
-			GameManager.Instance.IsWin = true;
-			GameManager.Instance.TriggerGameEnd();
-		}
-	}
 }

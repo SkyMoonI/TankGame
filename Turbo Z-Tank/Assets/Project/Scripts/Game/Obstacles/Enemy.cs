@@ -12,16 +12,19 @@ public class Enemy : MonoBehaviour
 
 	int _coinValue = 5;
 
+	EnemyRange _enemyRange;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		_player = GameObject.Find("Player").transform;
+		_enemyRange = transform.GetChild(0).GetComponent<EnemyRange>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (_player != null)
+		if (_player != null && !GameManager.Instance.IsDead && !GameManager.Instance.IsWin && _enemyRange.PlayerInRange)
 		{
 			Vector3 direction = _player.position - transform.position;
 			transform.Translate(direction.normalized * _speed * Time.deltaTime, Space.World);
@@ -52,7 +55,9 @@ public class Enemy : MonoBehaviour
 
 	void Die()
 	{
+		transform.GetChild(0).GetComponent<AudioSource>().Play();
 		GameManager.Instance.AddCoin(_coinValue);
-		Destroy(gameObject);
+		transform.GetComponent<MeshRenderer>().enabled = false;
+		transform.GetComponent<Collider>().enabled = false;
 	}
 }
