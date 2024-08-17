@@ -55,6 +55,7 @@ public class GameUIManager : MonoBehaviour
 
 	public void RetryLevel()
 	{
+		AdsManager.Instance._bannerAds.ShowAd();
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
@@ -69,5 +70,9 @@ public class GameUIManager : MonoBehaviour
 		SceneManager.LoadScene("MainMenuScene");
 	}
 
+	public void RewardMultiply()
+	{
+		AdsManager.Instance._rewardedAds.ShowAd();
+	}
 
 }

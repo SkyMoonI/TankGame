@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 	GameUIManager _gameUIManager;
 
+	// ads
+	int _gamePlayed = 0;
+	bool _isRewarded = false;
+	public bool IsRewarded { get { return _isRewarded; } set { _isRewarded = value; } }
+
+	// game state
 	bool _isDead = false;
 	public bool IsDead { get { return _isDead; } set { _isDead = value; } }
 	bool _isWin = false;
@@ -27,6 +33,13 @@ public class GameManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+
+		StartCoroutine(DisplayBannerWithDelay());
+	}
+	IEnumerator DisplayBannerWithDelay()
+	{
+		yield return new WaitForSeconds(1.0f);
+		AdsManager.Instance._bannerAds.ShowAd();
 	}
 
 	public void NewGameStart()
@@ -48,6 +61,20 @@ public class GameManager : MonoBehaviour
 		{
 			LevelComplete.Instance.CompleteLevel();
 		}
+
+		// Show intersitialads
+		_gamePlayed++;
+		if (_gamePlayed % 3 == 0)
+		{
+			AdsManager.Instance._interstitialAds.ShowAd();
+		}
+
+		AdsManager.Instance._bannerAds.HideAd();
+
+		// rewarded ads restart
+		_isRewarded = false;
+
+		//Game End
 		_gameUIManager.GameEnd();
 		_gameUIManager.EndLevelCoinText.text = "Coins: " + _totalCoins.ToString();
 		_totalCoins += PlayerPrefs.GetInt("playerCoins", 0);
@@ -56,7 +83,15 @@ public class GameManager : MonoBehaviour
 
 	public void AddCoin(int amount)
 	{
-		_totalCoins += amount;
+		if (_isRewarded)
+		{
+			_totalCoins += amount * 2;
+		}
+		else
+		{
+			_totalCoins += amount;
+
+		}
 		_gameUIManager.CoinsText.text = "Coins: " + _totalCoins.ToString();
 	}
 

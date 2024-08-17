@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public static AdsManager Instance { get; private set; }
+	public AdsInitializer _adsInitializer;
+	public InterstitialAds _interstitialAds;
+	public BannerAds _bannerAds;
+	public RewardedAds _rewardedAds;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+	void Awake()
+	{
+		if (Instance != null && Instance != this)
+		{
+			Destroy(gameObject);
+			return;
+		}
+
+		Instance = this;
+		DontDestroyOnLoad(gameObject);
+
+		_interstitialAds.LoadAd();
+		_bannerAds.LoadAd();
+		_rewardedAds.LoadAd();
+	}
 }

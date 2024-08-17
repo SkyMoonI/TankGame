@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 	void Start()
 	{
 		_player = GameObject.Find("Player").transform;
-		_enemyRange = transform.GetChild(0).GetComponent<EnemyRange>();
+		_enemyRange = transform.GetChild(1).GetComponent<EnemyRange>();
 	}
 
 	// Update is called once per frame
