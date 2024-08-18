@@ -75,10 +75,11 @@ public class GameManager : MonoBehaviour
 		_isRewarded = false;
 
 		//Game End
+		AudioManager.Instance.MusicSource.Stop();
 		_gameUIManager.GameEnd();
 		_gameUIManager.EndLevelCoinText.text = "Coins: " + _totalCoins.ToString();
-		_totalCoins += PlayerPrefs.GetInt("playerCoins", 0);
-		PlayerPrefs.SetInt("playerCoins", _totalCoins);
+		int finalCoins = PlayerPrefs.GetInt("playerCoins", 0) + _totalCoins;
+		PlayerPrefs.SetInt("playerCoins", finalCoins);
 	}
 
 	public void AddCoin(int amount)

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,7 +7,6 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Tank tank;
 
 	public float CurrentSpeed { get; private set; }
-
 	public float CurrentHealth { get; private set; }
 
 
@@ -21,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	}
 	void Start()
 	{
+		AudioManager.Instance.PlayMusic("bgmusic");
 		CurrentSpeed = tank.Speed;
 		CurrentHealth = tank.Health;
 		GameManager.Instance.NewGameStart();
@@ -79,6 +76,7 @@ public class PlayerController : MonoBehaviour
 	}
 	public void Die()
 	{
+		AudioManager.Instance.PlaySFX("death");
 		GameManager.Instance.IsDead = true;
 		GameManager.Instance.TriggerGameEnd();
 		Destroy(gameObject);

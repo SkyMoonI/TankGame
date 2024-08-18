@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 	void Start()
 	{
 		_player = GameObject.Find("Player").transform;
-		_enemyRange = transform.GetChild(1).GetComponent<EnemyRange>();
+		_enemyRange = transform.GetChild(0).GetComponent<EnemyRange>();
 	}
 
 	// Update is called once per frame
@@ -55,9 +55,8 @@ public class Enemy : MonoBehaviour
 
 	void Die()
 	{
-		transform.GetChild(0).GetComponent<AudioSource>().Play();
+		AudioManager.Instance.PlaySFX("enemy");
 		GameManager.Instance.AddCoin(_coinValue);
-		transform.GetComponent<MeshRenderer>().enabled = false;
-		transform.GetComponent<Collider>().enabled = false;
+		Destroy(gameObject);
 	}
 }

@@ -10,7 +10,7 @@ public class Coin : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			transform.parent.GetChild(0).GetComponent<AudioSource>().Play();
+			AudioManager.Instance.PlaySFX("coin");
 			GameManager.Instance.AddCoin(_coinValue);
 			Destroy(gameObject);
 		}

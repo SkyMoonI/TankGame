@@ -20,6 +20,7 @@ public class GameUIManager : MonoBehaviour
 	public TextMeshProUGUI EndLevelCoinText { get { return _endLevelCoinText; } set { _endLevelCoinText = value; } }
 
 	PlayerController _player;
+	TileMover _tileMover;
 	// Start is called before the first frame update
 	void Start()
 	{

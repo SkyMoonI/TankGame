@@ -20,7 +20,7 @@ public class ExplosiveBarrel : MonoBehaviour
 
 	void Explode()
 	{
-		transform.GetChild(0).GetComponent<AudioSource>().Play();
+		AudioManager.Instance.PlaySFX("explosion");
 		GameObject effect = Instantiate(_explosionEffect, transform.position, transform.rotation);
 
 		Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadius);

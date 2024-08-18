@@ -9,7 +9,7 @@ public class FinishLine : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			transform.GetChild(0).GetComponent<AudioSource>().Play();
+			AudioManager.Instance.PlaySFX("finish");
 			GameManager.Instance.IsWin = true;
 			GameManager.Instance.TriggerGameEnd();
 		}

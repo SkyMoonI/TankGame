@@ -39,6 +39,10 @@ public class UpgradeManager : MonoBehaviour
 	[SerializeField] Slider _speedSlider;
 	[SerializeField] Slider _healthSlider;
 
+	[SerializeField] TextMeshProUGUI _armorCoinsText;
+	[SerializeField] TextMeshProUGUI _speedCoinsText;
+	[SerializeField] TextMeshProUGUI _healthCoinsText;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -60,6 +64,10 @@ public class UpgradeManager : MonoBehaviour
 		_armorSlider.value = _armorLevel;
 		_speedSlider.value = _speedLevel;
 		_healthSlider.value = _healthLevel;
+
+		_armorCoinsText.text = "ARMOR: " + (_armorUpgradeCost * _armorLevel * 2).ToString();
+		_speedCoinsText.text = "SPEED: " + (_speedUpgradeCost * _speedLevel * 2).ToString();
+		_healthCoinsText.text = "HEALTH: " + (_healthUpgradeCost * _healthLevel * 2).ToString();
 	}
 
 	void UpgradePower(UpgradeType upgradeType)
@@ -67,34 +75,28 @@ public class UpgradeManager : MonoBehaviour
 		switch (upgradeType)
 		{
 			case UpgradeType.Armor:
-				if (_playerCoins >= _armorUpgradeCost * _armorLevel && _armorLevel <= _maxUpgradeLevel)
+				if (_playerCoins >= _armorUpgradeCost * _armorLevel * 2 && _armorLevel <= _maxUpgradeLevel)
 				{
-
-					_playerCoins -= _armorUpgradeCost * _armorLevel;
+					_playerCoins -= _armorUpgradeCost * _armorLevel * 2;
 					_armorLevel++;
-					_armorUpgradeCost *= 2;
 					UpdateUI();
 					SaveUpgradeLevels();
 				}
 				break;
 			case UpgradeType.Speed:
-				if (_playerCoins >= _speedUpgradeCost * _speedLevel && _speedLevel <= _maxUpgradeLevel)
+				if (_playerCoins >= _speedUpgradeCost * _speedLevel * 2 && _speedLevel <= _maxUpgradeLevel)
 				{
-
-					_playerCoins -= _speedUpgradeCost * _speedLevel;
+					_playerCoins -= _speedUpgradeCost * _speedLevel * 2;
 					_speedLevel++;
-					_speedUpgradeCost *= 2;
 					UpdateUI();
 					SaveUpgradeLevels();
 				}
 				break;
 			case UpgradeType.Health:
-				if (_playerCoins >= _healthUpgradeCost * _healthLevel && _healthLevel <= _maxUpgradeLevel)
+				if (_playerCoins >= _healthUpgradeCost * _healthLevel * 2 && _healthLevel <= _maxUpgradeLevel)
 				{
-
-					_playerCoins -= _healthUpgradeCost * _healthLevel;
+					_playerCoins -= _healthUpgradeCost * _healthLevel * 2;
 					_healthLevel++;
-					_healthUpgradeCost *= 2;
 					UpdateUI();
 					SaveUpgradeLevels();
 				}
@@ -103,7 +105,6 @@ public class UpgradeManager : MonoBehaviour
 				break;
 		}
 	}
-
 
 	void SaveUpgradeLevels()
 	{

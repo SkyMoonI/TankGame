@@ -14,7 +14,7 @@ public class Ramp : MonoBehaviour
 			PlayerController player = other.gameObject.GetComponent<PlayerController>();
 			if (player != null)
 			{
-				transform.GetChild(0).GetComponent<AudioSource>().Play();
+				AudioManager.Instance.PlaySFX("ramp");
 				player.BoostSpeed(boostMultiplier, boostDuration);
 			}
 		}

@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
 	public static AudioManager Instance { get; private set; }
-	[SerializeField] AudioSource _musicSource;
-	[SerializeField] AudioSource[] _sfxSources;
+	[SerializeField] AudioSource _musicSource, _sfxSources;
+	public AudioSource MusicSource { get { return _musicSource; } set { _musicSource = value; } }
+	[SerializeField] AudioClip[] _musicClips, _sfxClips;
 	void Awake()
 	{
 		if (Instance == null)
@@ -35,11 +36,35 @@ public class AudioManager : MonoBehaviour
 
 	public void SetSFXVolume(float volume)
 	{
-		foreach (var source in _sfxSources)
-		{
-			source.volume = volume;
-		}
+		_sfxSources.volume = volume;
 	}
 
-
+	public void PlayMusic(string name)
+	{
+		AudioClip temp = Array.Find(_musicClips, clip => clip.name == name);
+		if (temp == null)
+		{
+			Debug.Log("Music not found: " + name);
+			return;
+		}
+		else
+		{
+			_musicSource.clip = temp;
+			_musicSource.Play();
+		}
+	}
+	public void PlaySFX(string name)
+	{
+		AudioClip temp = Array.Find(_sfxClips, clip => clip.name == name);
+		if (temp == null)
+		{
+			Debug.Log("SFX not found: " + name);
+			return;
+		}
+		else
+		{
+			_sfxSources.clip = temp;
+			_sfxSources.Play();
+		}
+	}
 }
